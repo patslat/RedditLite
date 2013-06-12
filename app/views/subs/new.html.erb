@@ -1,0 +1,32 @@
+<h1>Create New Sub</h1>
+<form action="<%= subs_url %>" method="post">
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type="hidden" name="sub[moderator_id]"
+    value="<%= current_user.id %>">
+
+  <label for="sub_name">Name:</label>
+  <input type="text" name="sub[name]" id="sub_name">
+  <br>
+  <br>
+
+  <h3>Submit Links</h3>
+
+  <% 5.times do |i| %>
+  <input type="hidden" name="sub[links_attributes][<%= i %>][submitter_id]"
+    value="<%= current_user.id %>">
+  <input type="hidden"
+
+  <label for="title">Title:</label>
+  <input type="text" name="sub[links_attributes][<%= i %>][title]" id="title">
+
+  <label for="url">URL:</label>
+  <input type="text" name="sub[links_attributes][<%= i %>][url]" id="url">
+  <br>
+
+  <% end %>
+
+
+  <input type="submit" value="Create New Sub">
+
+</for>

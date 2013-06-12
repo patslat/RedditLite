@@ -1,0 +1,23 @@
+<form action="<%= new_link_url %>" method="post">
+  <% if @edit %>
+  <input type="hidden" name="_method" value="put">
+  <% end %>
+  <input type="hidden" name="authenticity_token"
+    value="<%= form_authenticity_token %>">
+  <input type="hidden" name="link[submitter_id]"
+    value="<%= current_user.id %>">
+
+  <label for="link_title">Title:</label>
+  <input type="text" name="link[title]"
+     value="<%= @link.title if @link %>" id="link_title">
+
+  <label for="link_url">URL:</label>
+  <input type="text" name="link[url]"
+     value="<%= @link.url if @link %>" id="link_url">
+
+  <% if @edit %>
+  <input type="submit" value="Edit Link">
+  <% else %>
+  <input type="submit" value="Create Link">
+  <% end %>
+</form>

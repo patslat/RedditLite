@@ -1,6 +1,9 @@
 require 'bcrypt'
 class User < ActiveRecord::Base
   attr_accessible :email, :username, :password
+  has_many :submitted_links,
+    class_name: 'Link',
+    foreign_key: :submitter_id
 
   def password=(password)
     self.password_digest = BCrypt::Password.create(password)
