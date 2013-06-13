@@ -4,7 +4,7 @@ class CommentsController < ApplicationController
   def show
     @link = Link.find(params[:link_id])
     @comment = Comment.find(params[:id])
-    @comment_tree = Comment.build_comment_tree(@comment.sub_comments)
+    @replies = @comment.sub_comments.select { |comment| comment.parent_comment == @comment }
   end
 
   def new

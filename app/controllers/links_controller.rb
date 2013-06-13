@@ -7,7 +7,7 @@ class LinksController < ApplicationController
 
   def show
     @link = Link.find(params[:id])
-    @comment_tree = @link.comments
+    @comments = @link.comments.select { |comment| comment.parent_comment == nil }
   end
 
   def new

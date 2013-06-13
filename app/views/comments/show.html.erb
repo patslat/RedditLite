@@ -1,5 +1,8 @@
 <h1>Viewing Comment</h1>
-<%= render @comment %>
+<%= @comment.author.username %>:
+<br>
+<%= @comment.body %>
+<br><br>
 
 <form action="<%= link_comments_url %>" method="post">
   <input type="hidden" name="authenticity_token"
@@ -15,4 +18,4 @@
 
 </form>
 <h2>Replies To This Comment</h2>
-<%= render @comment_tree %>
+<%= render @replies %>

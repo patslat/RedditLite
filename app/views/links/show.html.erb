@@ -12,34 +12,5 @@
 
   <input type="submit" value="Submit Comment">
 </form>
-<% unless @comment_tree.empty? %>
-  <% nesting_ids = [@comment_tree.first.id] %>
-  <% current_id = @comment_tree.first.id %>
-  <% @comment_tree.each do |comment| %>
 
-    <% if comment.parent_comment.nil? %>
-    <%= render comment %>
-    <% next %>
-    <% end %>
-
-    <% if nesting_ids.include?(comment.parent_comment.id) &&
-          current_id == comment.parent_comment.id%>
-
-    <li><%= render comment %></li>
-
-    <% elsif nesting_ids.include?(comment.parent_comment.id) &&
-             current_id != comment.parent_comment.id %>
-    </ul>
-    <% current_id = comment.parent_comment.id %>
-    <li><%= render comment %></li>
-
-    <% else %>
-    <ul>
-    <% nesting_ids << comment.parent_comment.id %>
-    <% current_id = comment.parent_comment.id %>
-
-    <li><%= render comment%></li>
-    <% end %>
-
-  <% end %>
-<% end %>
+<%= render @comments %>

@@ -1,6 +1,20 @@
-<p>
+<!-- <p>
 <%= comment.author.username %>:<br>
 <%= comment.body %>
 <%= link_to "Reply to this comment",
     link_comment_url(comment.link_id, comment) %>
-</p>
+</p> -->
+<li>
+    <%= comment.author.username %>
+    <%= comment.body %>
+    <%= link_to "Reply to this comment",
+        link_comment_url(comment.link_id, comment) %>
+
+    <% unless comment.sub_comments.empty? %>
+      <ul>
+
+        <%= render comment.sub_comments %>
+        <br>
+      </ul>
+    <% end %>
+</li>
