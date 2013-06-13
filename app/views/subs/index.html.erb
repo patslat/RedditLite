@@ -1,3 +1,3 @@
 <% @subs.each do |sub| %>
-<%= sub.name %>
+<%= link_to sub.name, sub_links_url(sub) %>
 <% end %>

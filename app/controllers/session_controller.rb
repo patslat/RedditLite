@@ -1,5 +1,5 @@
 class SessionController < ApplicationController
-
+  before_filter :authenticate_user, :only => :destroy
   def new
   end
 
@@ -25,7 +25,7 @@ class SessionController < ApplicationController
     user.save
     session[:token] = nil
     @current_user = nil
-    redirect_to :new
+    render :new
   end
 
 end

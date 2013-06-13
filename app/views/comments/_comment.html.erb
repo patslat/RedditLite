@@ -1,0 +1,6 @@
+<p>
+<%= comment.author.username %>:<br>
+<%= comment.body %>
+<%= link_to "Reply to this comment",
+    link_comment_url(comment.link_id, comment) %>
+</p>

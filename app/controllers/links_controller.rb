@@ -5,6 +5,11 @@ class LinksController < ApplicationController
     @links = Sub.find(params[:sub_id]).links
   end
 
+  def show
+    @link = Link.find(params[:id])
+    @comment_tree = @link.comments
+  end
+
   def new
   end
 
@@ -16,4 +21,6 @@ class LinksController < ApplicationController
       render :new
     end
   end
+
+
 end
